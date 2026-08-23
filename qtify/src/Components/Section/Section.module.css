@@ -17,6 +17,41 @@
   font-weight: 600;
 }
 
+.tabs {
+  min-height: 40px !important;
+  margin-bottom: 24px;
+}
+
+.tabs :global(.MuiTabs-flexContainer) {
+  gap: 28px;
+}
+
+.tabs :global(.MuiTabs-indicator) {
+  height: 3px;
+  border-radius: 3px;
+  background-color: var(--color-primary);
+}
+
+.tabs :global(.MuiTab-root) {
+  min-width: auto;
+  min-height: 40px;
+  margin-right: 28px;
+  padding: 5px 0;
+  color: #b3b3b3;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none;
+}
+
+.tabs :global(.MuiTab-root.Mui-selected) {
+  color: var(--color-primary);
+}
+
+.tabs :global(.MuiTab-root:last-child) {
+  margin-right: 0;
+}
+
 .collapseButton {
   border: 0;
   padding: 6px 0;
@@ -52,6 +87,14 @@
   .grid {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 20px 14px;
+  }
+
+  .tabs :global(.MuiTabs-flexContainer) {
+    gap: 20px;
+  }
+
+  .tabs :global(.MuiTab-root) {
+    margin-right: 20px;
   }
 
 }

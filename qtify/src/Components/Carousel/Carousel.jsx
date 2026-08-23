@@ -7,16 +7,17 @@ import styles from "./Carousel.module.css";
 import "swiper/css";
 
 function Carousel({ items = [], renderItem, getItemKey = (item) => item.id, navigationId = "default" }) {
-  const previousButtonClass = `${styles.previousButton} ${styles.previousButton}-${navigationId}`;
-  const nextButtonClass = `${styles.nextButton} ${styles.nextButton}-${navigationId}`;
+  const safeNavigationId = String(navigationId).replace(/[^a-zA-Z0-9_-]/g, "-");
+  const previousButtonClass = `${styles.previousButton} ${styles.previousButton}-${safeNavigationId}`;
+  const nextButtonClass = `${styles.nextButton} ${styles.nextButton}-${safeNavigationId}`;
 
   return (
     <div className={styles.carousel}>
       <Swiper
         modules={[Navigation, A11y]}
         navigation={{
-          prevEl: `.${styles.previousButton}-${navigationId}`,
-          nextEl: `.${styles.nextButton}-${navigationId}`,
+          prevEl: `.${styles.previousButton}-${safeNavigationId}`,
+          nextEl: `.${styles.nextButton}-${safeNavigationId}`,
         }}
         slidesPerView="auto"
         spaceBetween={20}

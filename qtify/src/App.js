@@ -14,9 +14,10 @@ function App() {
           <Section title="Top Albums" />
           <Section
             title="New Albums"
-            endpoint="new"
+            endpoint="albums/new"
             initiallyExpanded={false}
           />
+          <Section title="Songs" endpoint="songs" type="songs" showToggle={false} />
         </main>
         <Routes>
           {/* Add your routes here */}
