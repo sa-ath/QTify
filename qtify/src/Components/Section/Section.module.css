@@ -1,0 +1,56 @@
+.section {
+  padding: 28px 48px 40px;
+  background: var(--color-black);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.header h2 {
+  color: var(--color-white);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.collapseButton {
+  border: 0;
+  padding: 6px 0;
+  color: var(--color-primary);
+  background: transparent;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.collapseButton:hover {
+  color: var(--color-white);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 24px 20px;
+}
+
+.message {
+  grid-column: 1 / -1;
+  color: #b3b3b3;
+  font-size: 14px;
+}
+
+@media (max-width: 700px) {
+  .section {
+    padding: 24px 20px 32px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 20px 14px;
+  }
+}

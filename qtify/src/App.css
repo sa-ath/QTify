@@ -4,6 +4,12 @@
   min-height: 100vh;
 }
 
+.album-list {
+  display: flex;
+  gap: 16px;
+  padding: 24px 32px;
+}
+
 :root {
   --color-primary: #1DB954;
   --color-black: #121212;
