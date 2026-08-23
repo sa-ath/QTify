@@ -1,0 +1,58 @@
+.carousel {
+  position: relative;
+  padding: 0 44px;
+}
+
+.carousel :global(.swiper) {
+  width: 100%;
+}
+
+.slide {
+  width: 160px !important;
+  height: auto;
+}
+
+.previousButton,
+.nextButton {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: var(--color-black);
+  background: var(--color-primary);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.previousButton {
+  left: 0;
+}
+
+.nextButton {
+  right: 0;
+}
+
+.previousButton:hover,
+.nextButton:hover {
+  background: var(--color-white);
+}
+
+.previousButton:disabled,
+.nextButton:disabled {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .carousel {
+    padding: 0 36px;
+  }
+
+  .slide {
+    width: 140px !important;
+  }
+}
