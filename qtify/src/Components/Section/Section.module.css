@@ -38,6 +38,11 @@
   gap: 24px 20px;
 }
 
+.collapsedGrid {
+  max-height: 208px;
+  overflow: hidden;
+}
+
 .message {
   grid-column: 1 / -1;
   color: #b3b3b3;
@@ -52,5 +57,9 @@
   .grid {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 20px 14px;
+  }
+
+  .collapsedGrid {
+    max-height: 188px;
   }
 }

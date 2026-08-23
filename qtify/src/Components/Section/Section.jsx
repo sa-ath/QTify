@@ -3,11 +3,15 @@ import axios from "axios";
 import Card from "../Card/Card";
 import styles from "./Section.module.css";
 
-const TOP_ALBUMS_URL = "https://qtify-backend.labs.crio.do/albums/top";
+const API_BASE_URL = "https://qtify-backend.labs.crio.do/albums";
 
-function Section({ title = "Top Albums" }) {
+function Section({
+  title = "Top Albums",
+  endpoint = "top",
+  initiallyExpanded = true,
+}) {
   const [albums, setAlbums] = useState([]);
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -15,7 +19,7 @@ function Section({ title = "Top Albums" }) {
     let isMounted = true;
 
     axios
-      .get(TOP_ALBUMS_URL)
+      .get(`${API_BASE_URL}/${endpoint}`)
       .then(({ data }) => {
         if (isMounted) {
           setAlbums(Array.isArray(data) ? data : data.albums || []);
@@ -36,24 +40,24 @@ function Section({ title = "Top Albums" }) {
     return () => {
       isMounted = false;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <section className={styles.section} aria-labelledby="top-albums-title">
+    <section className={styles.section} aria-labelledby={`${endpoint}-albums-title`}>
       <div className={styles.header}>
-        <h2 id="top-albums-title">{title}</h2>
+        <h2 id={`${endpoint}-albums-title`}>{title}</h2>
         <button
           className={styles.collapseButton}
           type="button"
-          onClick={() => setIsCollapsed((collapsed) => !collapsed)}
-          aria-expanded={!isCollapsed}
+          onClick={() => setIsExpanded((expanded) => !expanded)}
+          aria-expanded={isExpanded}
         >
-          {isCollapsed ? "Show All" : "Collapse"}
+          {isExpanded ? "Collapse" : "Show All"}
         </button>
       </div>
 
-      {!isCollapsed && (
-        <div className={styles.grid}>
+        <div className={`${styles.grid} ${!isExpanded ? styles.collapsedGrid : ""}`}>
           {isLoading && <p className={styles.message}>Loading albums...</p>}
           {!isLoading && error && <p className={styles.message}>{error}</p>}
           {!isLoading && !error && albums.map((album) => (
@@ -64,8 +68,7 @@ function Section({ title = "Top Albums" }) {
               title={album.title}
             />
           ))}
-        </div>
-      )}
+      </div>
     </section>
   );
 }

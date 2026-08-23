@@ -12,6 +12,11 @@ function App() {
         <Hero />
         <main>
           <Section title="Top Albums" />
+          <Section
+            title="New Albums"
+            endpoint="new"
+            initiallyExpanded={false}
+          />
         </main>
         <Routes>
           {/* Add your routes here */}
